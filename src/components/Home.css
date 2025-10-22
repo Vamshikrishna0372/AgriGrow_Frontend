@@ -1,0 +1,138 @@
+.home-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.hero-section {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero-image {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 700px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background-color: #2f855a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #276749;
+}
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 3rem 2rem;
+  background: #f9fafb;
+}
+
+.feature-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 60px;
+  margin-bottom: 1rem;
+}
+
+.about-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #ffffff;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2f855a;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.register-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #f9fafb;
+}
+
+.register-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2f855a;
+}
+
+.register-box {
+  margin-top: 1rem;
+}
+
+.terms {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.terms a {
+  color: #2f855a;
+  text-decoration: underline;
+}
+
+.register-button {
+  background-color: #3182ce;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #2b6cb0;
+}
