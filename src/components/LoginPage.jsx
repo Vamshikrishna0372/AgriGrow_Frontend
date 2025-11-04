@@ -53,7 +53,7 @@ export default function LoginPage() {
       setLoading(true);
 
       if (isSignup) {
-        await axios.post("https://agrigrow-backend-hus4.onrender.com/api/auth/signup", {
+        await axios.post("http://localhost:5000/api/auth/signup", {
           name: formData.name,
           email: formData.email,
           password: formData.password,
@@ -67,7 +67,7 @@ export default function LoginPage() {
         setIsSignup(false);
         setFormData({ name: "", email: "", password: "", confirmPassword: "" });
       } else {
-        const res = await axios.post("https://agrigrow-backend-hus4.onrender.com/api/auth/login", {
+        const res = await axios.post("http://localhost:5000/api/auth/login", {
           email: formData.email,
           password: formData.password,
         });

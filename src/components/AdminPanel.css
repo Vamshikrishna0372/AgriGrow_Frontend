@@ -251,3 +251,301 @@
 .product-form .submit-btn:hover {
   background-color: #1b5e20;
 }
+/*
+====================================
+  ORDER MANAGEMENT SECTION STYLES
+====================================
+*/
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between order cards */
+    padding: 20px 0;
+}
+
+.order-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: 6px solid; /* Status color bar */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Status-specific border colors */
+.status-pendingverification {
+    border-left-color: #ff9800; /* Orange - Attention required */
+}
+.status-paid {
+    border-left-color: #2196f3; /* Blue - Ready to ship */
+}
+.status-shipped {
+    border-left-color: #4caf50; /* Green - In transit */
+}
+.status-delivered {
+    border-left-color: #9e9e9e; /* Grey - Completed */
+}
+
+/* --- Summary and Details Layout --- */
+
+.order-summary,
+.order-details {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.order-summary h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.order-summary p,
+.order-details p {
+    margin: 3px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.order-total {
+    font-weight: bold;
+    color: #e91e63; /* Pink for total amount */
+    margin-top: 10px !important;
+    font-size: 1em !important;
+}
+
+.order-details h5 {
+    margin: 10px 0 5px 0;
+    font-size: 0.95em;
+    color: #3f51b5; /* Indigo for section headers */
+}
+
+.order-details hr {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 10px 0;
+}
+
+.order-details strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* --- Action Buttons --- */
+
+.order-actions {
+    flex-shrink: 0;
+    width: 200px; /* Fixed width for button column */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+/* Specific Button Colors */
+.success-action {
+    background-color: #ff9800; /* Orange for verification/confirmation */
+    color: white;
+}
+.success-action:hover {
+    background-color: #e68900;
+}
+
+.primary-action {
+    background-color: #2196f3; /* Blue for 'Mark Shipped' */
+    color: white;
+}
+.primary-action:hover {
+    background-color: #1976d2;
+}
+
+.delivered-action {
+    background-color: #4caf50; /* Green for final delivery confirmation */
+    color: white;
+}
+.delivered-action:hover {
+    background-color: #388e3c;
+}
+
+.delivered-tag {
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    color: #757575;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+}
+
+/* Media Query for smaller screens (optional but recommended) */
+@media (max-width: 900px) {
+    .order-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .order-summary,
+    .order-details {
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .order-actions {
+        width: 100%;
+        flex-direction: row; /* Buttons side-by-side on small screens */
+        justify-content: space-between;
+    }
+    
+    .action-btn,
+    .delivered-tag {
+        flex: 1; /* Make buttons take up equal space */
+    }
+}
+/* AdminPanel.css */
+
+/* --- Status-specific border colors (Add this to the existing block) --- */
+
+.status-cancelled {
+    border-left-color: #f44336; /* Red - Cancelled */
+}
+
+
+/* --- Action Buttons (Add to the existing block) --- */
+
+.cancel-action {
+    background-color: #f44336; /* Red for cancellation */
+    color: white;
+    /* Adding some margin-top to separate it from primary flow buttons */
+    margin-top: 10px; 
+}
+.cancel-action:hover {
+    background-color: #d32f2f;
+}
+
+
+/* --- Tags (Add a style for the new 'Cancelled' tag) --- */
+
+.cancelled-tag {
+    padding: 8px 15px;
+    background-color: #ffebee; /* Light red background */
+    color: #f44336; /* Red text */
+    border: 1px solid #f44336;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+}
+/*
+====================================
+  QUEUE FILTER BUTTONS (Top Bar)
+====================================
+*/
+
+.order-queue-filters {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.queue-btn {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Pill shape */
+    background-color: #f8f8f8;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.queue-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Active Button Style */
+.active-queue {
+    background-color: #3f51b5; /* Indigo: Primary color for active selection */
+    color: white;
+    border-color: #3f51b5;
+    box-shadow: 0 2px 4px rgba(63, 81, 181, 0.4);
+}
+
+.active-queue:hover {
+    background-color: #303f9f;
+    border-color: #303f9f;
+}
+
+/* ====================================
+  STATUS TAG STYLES (Used within the buttons/drawer)
+====================================
+*/
+
+.status-tag,
+.delivered-tag,
+.cancelled-tag,
+.failed-tag {
+    /* Base styles for the tags used within the Detail Drawer and buttons */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* Base style for the destructive delete button */
+.delete-action {
+    background-color: #f44336; /* Red */
+    color: white;
+    /* Ensuring it's styled like other drawer buttons */
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+.delete-action:hover {
+    background-color: #d32f2f;
+}

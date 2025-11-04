@@ -10,7 +10,15 @@
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
   --transition: 0.3s ease;
+  
+  /* New Custom Variables for Profile Menu */
+  --profile-color: #28a745;
+  --profile-color-hover: #1e7e34;
 }
+
+/* =========================================
+   Base Styles (Desktop/Laptop View)
+   ========================================= */
 
 /* --- Base Theme --- */
 .dashboard {
@@ -48,6 +56,7 @@
   background: #256928;
 }
 
+/* Brand Text - Highlighted Style */
 .brand {
   display: flex;
   align-items: center;
@@ -60,6 +69,23 @@
 
 .brand:hover {
   transform: scale(1.05);
+}
+
+.brand-text {
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00b894, #55efc4, #00cec9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.brand-text:hover {
+  text-shadow: 0 0 10px #00b894, 0 0 20px #55efc4;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 /* --- Search Bar --- */
@@ -154,12 +180,85 @@
   animation: pulse 0.5s ease-in-out;
 }
 
+/* --- Profile Menu Dropdown (New Addition) --- */
+
+.profile-menu-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px; /* Space from other icons */
+}
+
+.profile-icon-btn {
+  font-size: 2rem;
+  color: var(--profile-color);
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.profile-icon-btn:hover {
+  color: var(--profile-color-hover);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  min-width: 240px;
+  background-color: var(--card-bg, #fff);
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+  padding: 0;
+}
+
+.profile-header {
+  padding: 12px 15px;
+  font-weight: bold;
+  color: var(--text-color-dark, #333);
+  border-bottom: 1px solid var(--border-color-light, #eee);
+  background-color: var(--highlight-color-light, #f0fff0);
+}
+
+.profile-link {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95em;
+  color: var(--text-color, #333);
+  transition: background-color 0.2s;
+}
+
+.profile-link:hover {
+  background-color: var(--hover-color, #f0f0f0);
+}
+
+.logout-btn-dropdown {
+  color: #dc3545;
+}
+
+.logout-btn-dropdown:hover {
+  background-color: #f8d7da;
+}
+
 /* --- Banner Carousel --- */
 .banner-carousel {
   width: 100%;
   overflow: hidden;
   position: relative;
-  height: 60vh;
+  height: 60vh; /* Desktop height */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 2rem;
 }
@@ -177,7 +276,7 @@
 
 .banner-slide img {
   width: 100%;
-  height: 60vh;
+  height: 60vh; /* Desktop height */
   object-fit: cover;
   filter: brightness(0.65);
 }
@@ -206,7 +305,7 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Products --- */
+/* --- Products & Grid Layout --- */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -247,11 +346,19 @@ h2 {
 
 .products {
   display: grid;
+  /* Columns that are at least 250px wide, distributing them evenly. */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 20px;
+  padding: 20px 0;
+  /* Centers the content if there are fewer than full columns */
+  justify-content: center;
 }
 
 .product {
+  /* Enforce max-width for consistent card size */
+  min-width: 250px;
+  max-width: 350px;
+  
   background: var(--card-bg);
   border-radius: 1rem;
   box-shadow: var(--shadow);
@@ -334,6 +441,43 @@ h2 {
   background: var(--accent);
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
+}
+
+/* --- Utility Product Styles --- */
+
+.no-results {
+  /* Span across all available grid columns */
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+  color: #999;
+}
+
+.show-more-btn {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.show-more-btn button {
+  background-color: #28a745; /* Green button */
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.show-more-btn button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05);
+}
+
+.show-more-btn button:focus {
+  outline: none;
 }
 
 /* --- Side Panels (Cart & Wishlist) --- */
@@ -558,14 +702,14 @@ h2 {
   border-radius: 15px;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Desktop default */
   box-shadow: var(--shadow-hover);
   animation: scaleIn 0.3s ease-in-out;
   position: relative;
 }
 
 .modal-image img {
-  width: 350px;
+  width: 350px; /* Desktop default */
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition);
@@ -620,8 +764,7 @@ h2 {
 }
 
 .cart-btn,
-.wish-btn,
-.buy-btn {
+.wish-btn {
   flex: 1;
   padding: 10px;
   border: none;
@@ -631,30 +774,29 @@ h2 {
   transition: background 0.2s ease;
 }
 
-.cart-btn {
+/* Specific styling for modal buttons */
+.modal-actions .cart-btn {
   background: #007bff;
   color: #fff;
 }
-
-.cart-btn:hover {
+.modal-actions .cart-btn:hover {
   background: #0056b3;
 }
 
-.wish-btn {
+.modal-actions .wish-btn {
   background: #ff4d4d;
   color: #fff;
 }
-
-.wish-btn:hover {
+.modal-actions .wish-btn:hover {
   background: #cc0000;
 }
 
-.buy-btn {
+/* Overriding general .buy-btn for modal context */
+.modal-actions .buy-btn {
   background: #28a745;
   color: #fff;
 }
-
-.buy-btn:hover {
+.modal-actions .buy-btn:hover {
   background: #1c7a32;
 }
 
@@ -718,23 +860,50 @@ footer {
   }
 }
 
-/* --- Responsive --- */
+/* =========================================
+   Responsive (Mobile View Overrides)
+   ========================================= */
+
 @media (max-width: 768px) {
+  /* --- Navbar Overrides --- */
   .nav {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
   }
+
+  .brand-text {
+    font-size: 1.8rem;
+  }
+
   .search-bar {
     width: 100%;
     margin: 0;
+    /* Ensure input/button fit well */
+    flex-wrap: nowrap;
   }
+  
+  .search-bar input {
+      min-width: unset;
+  }
+
   .nav-actions {
     width: 100%;
     justify-content: space-around;
+    gap: 0.5rem;
   }
+  
+  .profile-menu-container {
+      margin-left: 0;
+  }
+  
+  .profile-dropdown {
+      min-width: 200px;
+  }
+
+  /* --- Banner Overrides --- */
   .banner-carousel {
-    height: 40vh;
+    height: 40vh; /* Reduced height on mobile */
   }
   .banner-slide img {
     height: 40vh;
@@ -745,495 +914,130 @@ footer {
   .slide-overlay p {
     font-size: 1rem;
   }
+
+  /* --- Container & Grid Overrides --- */
   .container {
     width: 95%;
   }
   .products {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Slightly smaller columns for mobile */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
   }
+  .product {
+      min-width: 180px;
+      max-width: unset; /* Allow it to fit grid column */
+  }
+
+  /* --- Modal Overrides --- */
   .modal-card {
+    /* Stack image and details */
     flex-direction: column;
+    width: 95%;
   }
   .modal-image img {
     width: 100%;
     height: 250px;
   }
 }
-/* Perfect highlighted style for app title */
-.brand-text {
-  font-size: 2rem;                     /* prominent size */
-  font-weight: 900;                     /* extra bold */
-  background: linear-gradient(90deg, #00b894, #55efc4, #00cec9); /* smooth gradient */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* gradient effect */
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* subtle shadow for depth */
-  letter-spacing: 1px;                 /* slightly spaced letters for elegance */
-  transition: all 0.3s ease;           /* smooth hover effect */
+/* Dashboard.css - Add or verify these styles */
+
+/* ==================================================
+   TOAST NOTIFICATIONS (Enhanced Professional Look)
+   ================================================== */
+
+.app-notification {
+    /* Fixed positioning for standard top-right toast */
+    position: fixed;
+    top: 25px; /* Slightly lower from the edge */
+    right: 25px;
+    z-index: 2000; 
+    min-width: 250px; /* Ensures a decent width */
+    max-width: 350px;
+    
+    /* Typography and padding */
+    padding: 14px 20px;
+    border-radius: 10px; /* Softer rounded corners */
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #ffffff; /* Default text color */
+    
+    /* Initial state for slide-in animation */
+    opacity: 0;
+    transform: translateX(100%); /* Start off-screen to the right */
+    
+    /* Animation and transition for smooth interaction */
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Prevents the invisible toast from blocking clicks below it */
+    pointer-events: none; 
 }
 
-.brand-text:hover {
-  text-shadow: 0 0 10px #00b894, 0 0 20px #55efc4; /* glowing effect on hover */
-  transform: scale(1.05);             /* slight scale-up for interactivity */
-  cursor: pointer;                     /* indicate it's clickable */
+/* State when the message is set (overrides opacity/transform for visibility) */
+.app-notification[style*="null"] { 
+    /* The React logic keeps the element in the DOM for transitions,
+       but when the message state is NOT null, these visibility rules apply. */
 }
-/* Show More / Show Less Button */
-.show-more-btn {
-  text-align: center;
-  margin: 20px 0;
-}
+/* By setting the state property in the React component (Dashboard.jsx), we implicitly trigger the transition.
+   We only apply the visible styles when the message is present via JavaScript. */
 
-.show-more-btn button {
-  background-color: #28a745; /* Green button */
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
 
-.show-more-btn button:hover {
-  background-color: #218838; /* Darker green on hover */
-  transform: scale(1.05);
-}
+/* --- VISIBLE STATES (Apply when React sets the state) --- */
 
-.show-more-btn button:focus {
-  outline: none;
-}
-/* Dashboard.css: Add or modify the .products selector */
+/* Add these classes to your CSS to ensure the toast message appears */
+/* You will likely need a wrapper class for the final visibility state 
+   since the opacity/transform is controlled by the state logic in Dashboard.jsx. 
+   Assuming the component is rendered *without* the 'hidden' class when active. */
 
-.products {
-  display: grid;
-  /* This creates columns that are at least 250px wide and distributes them evenly. 
-     If only one product is present, it will maintain its fixed size in the center/left. */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; /* Consistent spacing between items */
-  padding: 20px 0;
-  /* This ensures that when the number of items is less than the number of columns, 
-     they remain aligned to the start/center of the row. */
-  justify-content: flex-start; /* or center, depending on your desired alignment */ 
-}
-/* Dashboard.css: Add or modify the .product selector */
-
-.product {
-  /* Set a max-width to prevent a single product from stretching too wide in the grid */
-  max-width: 300px; 
-  min-width: 250px; 
-  
-  /* Retain your existing styling like padding, border, shadow, etc. */
-  background-color: #fff; /* Example background */
-  border: 1px solid #ccc; /* Example border */
-  border-radius: 8px;
-  /* ... (rest of your product card styles) ... */
-}
-/* Dashboard.css: Add this new selector */
-
-.products .no-results {
-    /* Span across all available grid columns */
-    grid-column: 1 / -1; 
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2em;
-    color: #666; 
-}
-/* Dashboard.css - ADD these new styles for the Profile Menu */
-
-.profile-menu-container {
-    position: relative; /* Essential for dropdown positioning */
-    display: inline-block;
-}
-
-.profile-icon-btn {
-    /* Make the profile icon button a bit bigger and distinct */
-    font-size: 1.8rem;
-    color: var(--highlight-color, #4CAF50); /* Use your primary color/a distinct color */
-    padding: 0;
-    margin: 0 10px;
-}
-
-.profile-dropdown {
-    position: absolute;
-    top: 100%; /* Position right below the icon */
-    right: 0;
-    margin-top: 10px; /* Small gap between icon and dropdown */
-    min-width: 180px;
-    background-color: var(--panel-bg, #fff); /* Use a light background */
-    border: 1px solid var(--border-color, #ccc);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000; /* Ensure it stays on top of other elements */
-    overflow: hidden;
-    padding: 5px 0;
-}
-
-.profile-header {
-    padding: 10px 15px;
-    font-weight: bold;
-    color: var(--text-color, #333);
-    border-bottom: 1px solid var(--border-color-light, #eee);
-    margin-bottom: 5px;
-}
-
-.profile-link {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1em;
-    color: var(--text-color, #333);
-    transition: background-color 0.2s;
-}
-
-.profile-link:hover {
-    background-color: var(--hover-color, #f0f0f0); /* Light hover effect */
-}
-
-/* Dashboard.css - MODIFY/ADD these styles for FIXED PRODUCT SIZING */
-
-.products {
-  display: grid;
-  /* Columns that are at least 250px wide. This prevents single products from stretching. */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
-  padding: 20px 0;
-  /* Centers the products if there are less than a full row */
-  justify-content: center; 
-}
-
-.product {
-  /* Ensure a minimum and maximum width for a consistent card size */
-  min-width: 250px; 
-  max-width: 350px; 
-  /* Add/Keep your existing styles below this */
-  /* ... */ 
-}
-
-/* Optional: Style for the "No results" message to span the grid */
-.no-results {
-    grid-column: 1 / -1; 
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2em;
-    color: #999; 
-}
-/* ========================================================================= */
-/* PROFILE MENU STYLES (NEW ADDITIONS)                     */
-/* ========================================================================= */
-
-.profile-menu-container {
-    position: relative; 
-    display: inline-block;
-    margin-left: 10px; /* Space from other icons */
-}
-
-/* Style for the profile button/icon */
-.profile-icon-btn {
-    font-size: 2rem; /* Bigger size for prominence */
-    color: #007bff; /* Distinct color for profile - e.g., blue */
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.profile-icon-btn:hover {
-    color: #0056b3; /* Darker blue on hover */
-}
-
-/* The Dropdown Panel */
-.profile-dropdown {
-    position: absolute;
-    top: 100%; 
-    right: 0;
-    margin-top: 10px;
-    min-width: 220px;
-    background-color: var(--card-bg, #fff); 
-    border: 1px solid var(--border-color, #ccc);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
-    overflow: hidden;
-    padding: 0;
-}
-
-.profile-header {
-    padding: 10px 15px;
-    font-weight: bold;
-    color: var(--text-color-dark, #333);
-    border-bottom: 1px solid var(--border-color-light, #eee);
-    background-color: var(--highlight-color-light, #eaf9ea); /* Light background for header */
-}
-
-.profile-link {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.95em;
-    color: var(--text-color, #333);
-    transition: background-color 0.2s;
-}
-
-.profile-link:hover {
-    background-color: var(--hover-color, #f0f0f0);
-}
-
-.logout-btn-dropdown {
-    color: #dc3545; /* Red color for logout */
-}
-
-.logout-btn-dropdown:hover {
-    background-color: #f8d7da; /* Light red background on hover */
+.app-notification:not([style*="null"]) {
+    opacity: 1;
+    transform: translateX(0); /* Slide fully into view */
+    pointer-events: auto; /* Allows interaction (e.g., if you add a close button) */
 }
 
 
-/* ========================================================================= */
-/* PRODUCT GRID STYLES (MODIFICATIONS FOR FIXED SIZE)             */
-/* ========================================================================= */
-
-.products {
-  display: grid;
-  /* Columns at least 250px wide, distributing them evenly. */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
-  padding: 20px 0;
-  /* Centers the content if there are fewer than full columns */
-  justify-content: center; 
+.app-notification.success {
+    /* Use a rich, professional green */
+    background-color: #4CAF50; 
+    border: 1px solid #388E3C;
+    /* Elevated shadow for depth */
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4); 
 }
 
-.product {
-  /* Enforce max-width to prevent a single product from stretching */
-  max-width: 350px; 
-  min-width: 250px; 
-  /* Add/Keep your existing styles (padding, border, shadow) */
-  /* ... */ 
+.app-notification.info {
+    /* Use a clear blue for informative actions (like wishlist) */
+    background-color: #2196F3; 
+    border: 1px solid #1976D2;
+    box-shadow: 0 6px 15px rgba(33, 150, 243, 0.4);
 }
 
-.no-results {
-    grid-column: 1 / -1; /* Make the message span all columns */
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2em;
-    color: #999; 
+/* Add an Error style for professional feedback */
+.app-notification.error {
+    background-color: #F44336; 
+    border: 1px solid #D32F2F;
+    box-shadow: 0 6px 15px rgba(244, 67, 54, 0.4);
 }
 
+/* --- HIDING STATE --- */
 
-/* ========================================================================= */
-/* ProfilePage.css (MOCK STYLES FOR NEW PAGE)                */
-/* ========================================================================= */
-
-/* You should create a separate ProfilePage.css file for these */
-
-.profile-page {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* This is the state when the timer runs out, hiding the notification off-screen */
+/* The React component will set the state to null, which is handled by the :not([style...]) selector,
+   but we keep this specific class definition for robustness. */
+.app-notification.hidden {
+    opacity: 0;
+    transform: translateX(100%); 
+    pointer-events: none; 
 }
 
-.profile-header-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+/* ==================================================
+   DARK MODE ADJUSTMENTS
+   ================================================== */
+
+.dark .app-notification.success {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }
 
-.back-btn {
-    background: none;
-    border: 1px solid #ccc;
-    color: #555;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.2s;
-}
-
-.back-btn:hover {
-    background-color: #f0f0f0;
-}
-
-.profile-content {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.profile-card {
-    flex: 1 1 300px;
-    padding: 30px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.profile-avatar {
-    font-size: 5rem;
-    color: #4CAF50; /* Green theme color */
-    margin-bottom: 20px;
-}
-
-.member-since {
-    color: #777;
-    font-size: 0.9em;
-    margin-bottom: 25px;
-}
-
-.profile-details {
-    text-align: left;
-    margin-bottom: 30px;
-}
-
-.detail-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.detail-icon {
-    color: #4CAF50;
-    font-size: 1.2em;
-}
-
-.edit-profile-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    width: 100%;
-}
-
-.edit-profile-btn:hover {
-    background-color: #45a049;
-}
-
-.additional-sections {
-    flex: 2 1 500px;
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-}
-/* ========================================================================= */
-/* PROFILE MENU STYLES (REQUIRED ADDITIONS)                     */
-/* ========================================================================= */
-
-.profile-menu-container {
-    position: relative; 
-    display: inline-block;
-    margin-left: 10px; 
-}
-
-/* Style for the profile button/icon */
-.profile-icon-btn {
-    font-size: 2rem; 
-    color: var(--profile-color, #28a745); /* Green theme color for profile */
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.profile-icon-btn:hover {
-    color: var(--profile-color-hover, #1e7e34); 
-}
-
-/* The Dropdown Panel */
-.profile-dropdown {
-    position: absolute;
-    top: 100%; 
-    right: 0;
-    margin-top: 10px;
-    min-width: 240px; 
-    background-color: var(--card-bg, #fff); 
-    border: 1px solid var(--border-color, #ccc);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
-    overflow: hidden;
-    padding: 0;
-}
-
-.profile-header {
-    padding: 12px 15px;
-    font-weight: bold;
-    color: var(--text-color-dark, #333);
-    border-bottom: 1px solid var(--border-color-light, #eee);
-    background-color: var(--highlight-color-light, #f0fff0);
-}
-
-.profile-link {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.95em;
-    color: var(--text-color, #333);
-    transition: background-color 0.2s;
-}
-
-.profile-link:hover {
-    background-color: var(--hover-color, #f0f0f0);
-}
-
-.logout-btn-dropdown {
-    color: #dc3545; 
-}
-
-.logout-btn-dropdown:hover {
-    background-color: #f8d7da; 
-}
-
-
-/* ========================================================================= */
-/* PRODUCT GRID STYLES (MODIFICATIONS FOR FIXED SIZING) */
-/* ========================================================================= */
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
-  padding: 20px 0;
-  justify-content: center; 
-}
-
-.product {
-  max-width: 350px; 
-  min-width: 250px; 
-  /* Add/Keep your existing styles */
-}
-
-.no-results {
-    grid-column: 1 / -1; 
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2em;
-    color: #999; 
+.dark .app-notification.info {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }

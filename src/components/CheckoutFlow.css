@@ -1,0 +1,550 @@
+/* =========================================
+    Base Styles: DESKTOP-FIRST
+    ========================================= */
+
+/* --- Page & General Elements --- */
+
+.cart-page {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f0f7f5, #e8f5e9);
+    min-height: 100vh;
+}
+
+.checkout-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.main-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1a5e3a;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkout-wrapper hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 1.5rem 0;
+}
+
+.step-container h2 {
+    font-size: 1.6rem;
+    color: #2e7d32;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e8f5e9;
+    text-align: center;
+}
+
+/* Base style for detail sections */
+.detail-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* --- Step 2a: Order Summary (Primary View) --- */
+
+.delivery-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.summary-section {
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f7fcf9;
+    border: 1px solid #e0e0e0;
+}
+
+.summary-section h3 {
+    color: #2e7d32;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed #ccc;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.delivery-details-box p {
+    margin: 0.3rem 0;
+    line-height: 1.4;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.product-item-summary {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.totals-box {
+    text-align: right;
+    border: 2px solid #1a5e3a;
+    background-color: #e6f5ea;
+}
+.totals-box p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.totals-box .total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #c0392b;
+    border-top: 1px dashed #1a5e3a;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.edit-details-btn {
+    background: #f0f0f0;
+    border: none;
+    color: #555;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+.edit-details-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.summary-buttons {
+    margin-top: 1rem;
+}
+
+.pay-now-btn {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 6px;
+    background: linear-gradient(45deg,#00bcd4,#0097a7);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.pay-now-btn:hover {
+    background: linear-gradient(45deg,#0097a7,#00838f);
+    transform: scale(1.01);
+}
+
+/* --- Step 2b: Payment Section --- */
+
+.payment-section h3 {
+    color: #2e7d32;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.total-amount-payable {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #c0392b;
+    margin-bottom: 1.5rem;
+}
+
+.payment-section .qr-code {
+    margin: 1rem auto;
+    width: 200px;
+    height: 200px;
+    border: 3px solid #2e7d32;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+.qr-instruction {
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.transaction-form input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+.transaction-form h4 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.transaction-form button {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 6px;
+    background: #4caf50;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.transaction-form button:hover {
+    background: #2e7d32;
+    transform: scale(1.01);
+}
+
+.back-to-summary-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.7rem;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #555;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.back-to-summary-btn:hover {
+    background: #e0e0e0;
+}
+
+/* --- Step 3: Success Message (ENHANCED) --- */
+
+.success-message h2 {
+    color: #2e7d32;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+.success-message .success-icon {
+    display: block;
+    margin: 0 auto 1.5rem;
+    color: #4caf50;
+}
+.verification-text {
+    text-align: center;
+    color: #777;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.shipping-info-summary {
+    background-color: #fff8e1; /* Light yellow background */
+    border: 1px solid #ffecb3;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.shipping-info-title {
+    color: #ff9800; /* Orange color */
+    font-size: 1.1rem !important; 
+    margin-bottom: 0.8rem !important;
+    border-bottom: 1px dashed #ffc107;
+    padding-bottom: 0.5rem;
+    text-align: left;
+}
+.shipping-info-summary p {
+    margin: 0.2rem 0;
+    font-size: 0.95rem;
+}
+.transaction-info {
+    margin-top: 0.8rem !important;
+    padding-top: 0.5rem;
+    border-top: 1px solid #ffecb3;
+    font-size: 0.9rem !important;
+}
+.transaction-info .separator {
+    margin: 0 10px;
+    color: #aaa;
+}
+
+
+/* --- Invoice Bill Component Styles (MATCHING IMAGE) --- */
+
+.invoice-preview {
+    background-color: #fcfcf9; /* Off-white background */
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-container {
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.company-info {
+    display: flex;
+    flex-direction: column;
+}
+.company-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+.company-tagline {
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: -3px;
+}
+
+.invoice-title-section {
+    text-align: right;
+}
+.invoice-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #333;
+    margin: 0;
+}
+.invoice-title-section p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+
+.billing-shipping-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.billing-details, .shipping-details {
+    width: 48%;
+}
+.billing-details h3, .shipping-details h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.billing-details p, .shipping-details p {
+    font-size: 0.8rem;
+    margin: 2px 0;
+    line-height: 1.3;
+}
+
+
+.item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.8rem;
+}
+.item-table th, .item-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    text-align: left;
+}
+.item-table th {
+    background-color: #f7f7f7;
+    font-weight: 700;
+    color: #333;
+}
+.item-qty { text-align: center; width: 10%; }
+.item-price, .item-total { text-align: right; width: 15%; }
+
+.summary-section-invoice {
+    display: flex;
+    justify-content: flex-end; /* Align totals to the right */
+    margin-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+}
+
+.totals-box-invoice {
+    width: 50%;
+}
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    font-size: 0.9rem;
+}
+
+.grand-total-line {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #c0392b; /* Reddish total */
+    border-top: 2px solid #333;
+    padding-top: 5px;
+    margin-top: 8px;
+}
+.grand-total-val {
+    font-size: 1.3rem;
+}
+.currency-val {
+    min-width: 100px;
+    text-align: right;
+}
+
+.terms-conditions {
+    margin-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+}
+.terms-conditions h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 5px;
+}
+.terms-conditions p {
+    font-size: 0.8rem;
+    margin: 2px 0;
+    line-height: 1.4;
+}
+
+/* --- Post Payment Buttons --- */
+
+.post-payment-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+.post-payment-buttons button {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.post-payment-buttons .download-btn {
+    background: #f57c00;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-payment-buttons .download-btn:hover {
+    background: #e65100;
+    transform: translateY(-2px);
+}
+.post-payment-buttons .home-btn {
+    background: #5c6bc0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.post-payment-buttons .home-btn:hover {
+    background: #3949ab;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+    Responsiveness: MOBILE VIEW OVERRIDES
+    ========================================= */
+
+@media(max-width:768px){
+    
+    .checkout-wrapper {
+        padding: 1rem;
+    }
+    
+    .detail-section {
+        padding: 1rem;
+    }
+
+    /* Summary: Stack sections, make buttons full width */
+    .edit-details-btn {
+        margin-top: 10px;
+        width: 100%; /* Full width edit button on mobile */
+        justify-content: center;
+    }
+
+    /* Success: Stack post-payment buttons */
+    .post-payment-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .post-payment-buttons button {
+        width: 100%;
+    }
+
+    /* Invoice on mobile */
+    .invoice-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .invoice-title-section {
+        text-align: center;
+        margin-top: 10px;
+    }
+    .invoice-title-section p {
+        text-align: center;
+    }
+
+    .billing-shipping-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .billing-details, .shipping-details {
+        width: 100%;
+    }
+    .totals-box-invoice {
+        width: 100%;
+    }
+    .summary-line {
+        font-size: 0.85rem;
+    }
+    .grand-total-line {
+        font-size: 1rem;
+    }
+    .grand-total-val {
+        font-size: 1.1rem;
+    }
+}

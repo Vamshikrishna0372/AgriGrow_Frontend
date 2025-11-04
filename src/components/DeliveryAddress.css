@@ -1,0 +1,435 @@
+/* ========================================================================= */
+/* GLOBAL STYLES & LAYOUT                                                    */
+/* ========================================================================= */
+
+.cart-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 20px;
+    background-color: #f7f9f7; /* Light off-white/greenish background */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.back-btn-cart {
+    background: none;
+    border: none;
+    color: #4CAF50; /* Green */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+}
+
+.cart-title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #E8F5E9;
+    padding-bottom: 10px;
+}
+
+.title-icon {
+    color: #4CAF50;
+    font-size: 2.2rem;
+}
+
+.cart-title-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #388E3C;
+    margin: 0;
+}
+
+.cart-flow-container {
+    padding: 0;
+}
+
+/* --- Loading and Empty States --- */
+.loading-state, .error-state, .empty-cart {
+    text-align: center;
+    padding: 50px 20px;
+    border: 1px dashed #A5D6A7;
+    border-radius: 8px;
+    margin-top: 30px;
+    color: #555;
+}
+
+.loading-icon {
+    animation: spin 1s linear infinite;
+    color: #4CAF50;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.start-shopping-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ========================================================================= */
+/* STAGE 0: CART ITEMS & SUMMARY LAYOUT (Side-by-Side)                       */
+/* ========================================================================= */
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* --- Cart Item Card --- */
+.cart-item-card {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    color: #388E3C;
+    margin: 0 0 5px 0;
+    cursor: pointer;
+}
+
+.product-category {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 3px 0;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #E67E22;
+    margin: 5px 0 10px 0;
+}
+
+.stock-info {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.in-stock { color: #27AE60; }
+.out-of-stock { color: #E74C3C; }
+
+.action-buttons-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.more-info-btn, .remove-btn-c {
+    background: none;
+    border: 1px solid;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.more-info-btn { color: #2980B9; border-color: #2980B9; }
+.remove-btn-c { color: #E74C3C; border-color: #E74C3C; }
+
+
+/* --- Cart Summary --- */
+.cart-summary {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.cart-summary h2 {
+    font-size: 1.4rem;
+    color: #388E3C;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E8F5E9;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.summary-separator {
+    border-top: 1px dashed #ccc;
+    margin: 10px 0;
+}
+
+.total-line {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2C3E50;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: #E67E22; /* Orange for Primary Action */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+/* ========================================================================= */
+/* STAGE 1: DELIVERY ADDRESS FORM                                            */
+/* ========================================================================= */
+
+.delivery-form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.delivery-form h3 {
+    text-align: center;
+    color: #388E3C;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.delivery-form input, 
+.delivery-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.delivery-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* --- Saved Address Selector --- */
+.saved-addresses-block {
+    margin-bottom: 20px;
+}
+
+.saved-addresses-selector h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.address-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.address-item {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.address-btn {
+    background-color: #E8F5E9; 
+    color: #388E3C;
+    border: 1px solid #A5D6A7;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.address-btn.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #388E3C;
+    font-weight: 600;
+}
+
+.edit-address-btn {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #2980B9;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-new-address-btn {
+    background-color: #F39C12;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* --- Selected Address Summary --- */
+.selected-address-summary {
+    border: 1px solid #A5D6A7;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    background-color: #f0fff0; /* Very light green */
+}
+
+.edit-details-btn {
+    background: none;
+    border: 1px solid #2980B9;
+    color: #2980B9;
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* --- Form Actions --- */
+.save-address-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.confirm-delivery-btn {
+    background-color: #27AE60; /* Strong Green for Submit */
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.cancel-btn {
+    background: #eee;
+    color: #555;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.back-to-cart-btn {
+    background: none;
+    color: #388E3C;
+    border: 1px solid #A5D6A7;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* --- Media Queries --- */
+
+@media (max-width: 900px) {
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+    .cart-summary {
+        position: static;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cart-page {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    .cart-item-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .item-details {
+        align-items: center;
+    }
+    .action-buttons-row {
+        justify-content: center;
+    }
+    .delivery-form {
+        padding: 20px;
+    }
+}
