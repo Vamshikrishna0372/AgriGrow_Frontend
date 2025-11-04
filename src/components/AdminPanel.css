@@ -549,3 +549,31 @@
 .delete-action:hover {
     background-color: #d32f2f;
 }
+/* 💥 NEW: Permanent Delete Button on Order Card */
+.permanent-delete-btn {
+    grid-column: 4 / 5; /* Positioned in the last grid column */
+    background: none;
+    border: none;
+    color: #e74c3c; /* Red color */
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.1s;
+    padding: 10px;
+    align-self: center; /* Center vertically within its grid cell */
+    justify-self: center; /* Center horizontally within its grid cell */
+    opacity: 0.5; /* Slightly muted when inactive */
+}
+
+.permanent-delete-btn:hover {
+    color: #c0392b; /* Darker red on hover */
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Ensure the order-card grid template is set up as suggested in the full code: */
+/* .order-card {
+    ...
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr 50px; 
+    ...
+} */

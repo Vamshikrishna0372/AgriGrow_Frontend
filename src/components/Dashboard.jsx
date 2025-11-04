@@ -62,7 +62,7 @@ export default function Dashboard() {
     const profileMenuRef = useRef(null);
 
     const PRODUCTS_PER_ROW = 4;
-    const API_BASE_URL = "http://localhost:5000/api";
+    const API_BASE_URL = "https://agrigrow-backend-rgpk.onrender.com/api";
 
     // --- Banner Images (Kept as before) ---
     const bannerImgs = [

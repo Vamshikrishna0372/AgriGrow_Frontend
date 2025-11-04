@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Profile.css'; 
 
 // Ensure your backend is running on this URL
-const API_BASE_URL = "http://localhost:5000/api/auth"; 
+const API_BASE_URL = "https://agrigrow-backend-rgpk.onrender.com/api/auth"; 
 
 /**
  * Utility to read the authenticated user's email from localStorage. 

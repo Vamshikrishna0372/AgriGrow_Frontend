@@ -5,7 +5,7 @@ import { FaHeart, FaShoppingCart, FaTrash, FaChevronLeft, FaStar, FaStarHalfAlt,
 import './Wishlist.css';
 
 // 🔑 BACKEND CONFIGURATION
-const API_BASE_URL = 'http://localhost:5000/api'; 
+const API_BASE_URL = 'https://agrigrow-backend-rgpk.onrender.com/api'; 
 const MOCK_USER_ID = '60c72b2f9c8f2b0015b4e8c1'; 
 
 /**

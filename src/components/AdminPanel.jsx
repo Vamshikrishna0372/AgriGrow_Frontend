@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { 
     FaSignOutAlt, FaBoxOpen, FaPlusCircle, FaUsers, FaTruck, FaEdit, FaTrash, 
-    FaListAlt, FaCheck, FaDollarSign, FaMapMarkerAlt
+    FaListAlt, FaCheck, FaDollarSign, FaMapMarkerAlt, FaBin
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./AdminPanel.css";
 
 // ⚠️ WARNING: Update this URL to match your server's domain/port
-const API_BASE = "http://localhost:5000/api"; 
+const API_BASE = "https://agrigrow-backend-rgpk.onrender.com/api"; 
 
 export default function AdminPanel() {
     const navigate = useNavigate();
@@ -52,7 +52,7 @@ export default function AdminPanel() {
                     const res = await fetch(url);
                     const data = await res.json();
                     if (res.ok) {
-                        // 🔑 STEP 3: Implement Client-Side Sorting (Oldest first for action queue)
+                        // 🔑 Implement Client-Side Sorting (Oldest first for action queue)
                         const sortedData = data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
                         setter(sortedData);
                     } else {
@@ -102,7 +102,7 @@ export default function AdminPanel() {
     };
 
     // ------------------------------------------------
-    // 🌟 HANDLER: Cancel Order
+    // HANDLER: Cancel Order (Set Status to 'Cancelled')
     // ------------------------------------------------
     const handleCancelOrder = async (orderId) => {
         if (!window.confirm(`⚠️ Are you sure you want to CANCEL order ${orderId.substring(0, 8)}...? This action cannot be undone.`)) return;
@@ -134,23 +134,49 @@ export default function AdminPanel() {
         }
     };
 
+    // ------------------------------------------------
+    // 💥 NEW HANDLER: Permanently Delete Order
+    // ------------------------------------------------
+    const handleDeleteOrderPermanently = async (orderId) => {
+        if (!window.confirm(`🔥🔥🔥 WARNING: Are you sure you want to PERMANENTLY DELETE order ${orderId.substring(0, 8)}... from the database? This cannot be recovered.`)) return;
+
+        try {
+            // NOTE: Assuming a backend route like DELETE /api/orders/:id exists
+            const res = await fetch(`${API_BASE}/orders/delete/${orderId}`, {
+                method: "DELETE",
+                // NOTE: Include Admin JWT token
+            });
+
+            if (res.ok) {
+                toast.success(`Order ${orderId.substring(0, 8)}... permanently deleted.`);
+                
+                // Remove the order from the local state
+                setOrders(prev => prev.filter(o => o._id !== orderId));
+            } else {
+                const data = await res.json();
+                toast.error(data.message || "Failed to permanently delete order.");
+            }
+        } catch (err) {
+            toast.error("Network error during order deletion.");
+            console.error(err);
+        }
+    };
+
     // --- Product Management Handlers (Simplified) ---
     const handleLogout = () => navigate("/auth");
     
-    // ⬇️ MODIFIED HANDLER: Handles all input changes, including the new 'quantity' field
     const handleChange = (e) => { 
         const { name, value, type, checked } = e.target;
         setNewProduct({ ...newProduct, [name]: type === "checkbox" ? checked : value });
     };
     
-    // ⬇️ MODIFIED HANDLER: Ensures price, rating, and now QUANTITY are numbers
     const handleAddProduct = async (e) => { 
         e.preventDefault();
         const productToSend = {
             ...newProduct,
             price: Number(newProduct.price),
             rating: Number(newProduct.rating) || 0,
-            quantity: Number(newProduct.quantity) || 0, // ⬅️ NEW: Parse quantity to a number
+            quantity: Number(newProduct.quantity) || 0, // Parse quantity to a number
         };
 
         try {
@@ -182,7 +208,7 @@ export default function AdminPanel() {
             // Reset form
             setNewProduct({
                 name: "", photo: "", price: "", description: "", rating: "", inStock: true, brand: "", type: "Soil", sku: "",
-                quantity: "", // ⬅️ Reset new quantity field
+                quantity: "", // Reset new quantity field
             });
         } catch (err) {
             toast.error("Server error, try again later");
@@ -207,19 +233,19 @@ export default function AdminPanel() {
     };
     const handleEdit = (product) => {
         setActiveSection("addProduct");
-        // ⬇️ MODIFIED: Ensure new product fields are populated for editing
+        // Populate new product fields for editing
         setNewProduct({
             ...product,
             price: product.price, 
             rating: product.rating, 
             inStock: product.inStock,
-            quantity: product.quantity || "", // ⬅️ Populate quantity for editing
+            quantity: product.quantity || "", // Populate quantity for editing
         });
         setEditingId(product._id);
     };
     
     // ------------------------------------------------
-    // 🔑 STEP 4: RENDERER: Orders Section (Status-Based Queues)
+    // RENDERER: Orders Section (Status-Based Queues)
     // ------------------------------------------------
     const renderOrdersSection = () => {
         let currentOrders = [];
@@ -330,6 +356,15 @@ export default function AdminPanel() {
                                     {order.payment.status === 'Cancelled' && (<span className="cancelled-tag">Cancelled</span>)}
                                     {order.payment.status === 'Failed' && (<span className="failed-tag">Failed</span>)}
                                 </div>
+
+                                {/* 💥 NEW: Permanent Delete Button */}
+                                <button 
+                                    className="permanent-delete-btn"
+                                    onClick={() => handleDeleteOrderPermanently(order._id)}
+                                    title="Permanently Delete Order"
+                                >
+                                    <FaTrash />
+                                </button>
                             </div>
                         ))}
                     </div>

@@ -3,7 +3,7 @@ import { FaArrowLeft, FaSave, FaCheckCircle, FaPlus, FaEdit, FaChevronLeft } fro
 import './DeliveryAddress.css'; // Assuming you named the CSS file this way
 
 // ⚠️ IMPORTANT: These constants and API helpers must match the logic in Cart.js
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://agrigrow-backend-rgpk.onrender.com/';
 const MOCK_USER_ID = "65b121e780d603417855f70a";
 
 const initialDeliveryState = {
