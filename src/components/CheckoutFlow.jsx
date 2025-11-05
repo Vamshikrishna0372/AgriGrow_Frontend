@@ -8,7 +8,7 @@ import './CheckoutFlow.css';
 import ScannerImage from "./Scanner.jpg"; 
 
 // --- MOCK API BASE URL ---
-const API_BASE_URL = 'https://agrigrow-backend-rgpk.onrender.com/api/orders';
+const API_BASE_URL = 'https://agrigrow-backend-j1r5.onrender.com/api/orders';
 
 // Helper function to format currency strings with commas (for HTML display)
 const formatCurrency = (amount) => {

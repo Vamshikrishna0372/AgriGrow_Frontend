@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import './OrdersPage.css'; // Ensure you have this CSS file
 
 // ⚠️ WARNING: Update this URL to match your server's domain/port
-const API_BASE = "https://agrigrow-backend-rgpk.onrender.com/api";
+const API_BASE = "https://agrigrow-backend-j1r5.onrender.com/api";
 
 // --- MOCK DATA/FUNCTION (Must match the TEMP_USER_ID in your backend routes/order.js) ---
 const getCurrentUserId = () => "65b121e780d603417855f70a"; 

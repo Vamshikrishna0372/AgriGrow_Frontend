@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./AdminPanel.css";
 
 // ⚠️ WARNING: Update this URL to match your server's domain/port
-const API_BASE = "https://agrigrow-backend-rgpk.onrender.com/api"; 
+const API_BASE = "https://agrigrow-backend-j1r5.onrender.com/api"; 
 
 export default function AdminPanel() {
     const navigate = useNavigate();

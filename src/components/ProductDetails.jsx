@@ -20,7 +20,7 @@ import {
 import './ProductDetails.css';
 
 // 🔑 BACKEND CONFIGURATION (Replace with your actual user context and API helpers)
-const API_BASE_URL = 'https://agrigrow-backend-rgpk.onrender.com/api'; // Base URL for all APIs
+const API_BASE_URL = 'https://agrigrow-backend-j1r5.onrender.com/api'; // Base URL for all APIs
 const MOCK_USER_ID = '60c72b2f9c8f2b0015b4e8c1'; // Example User ID for testing API interaction
 
 // 🔑 MOCK DATA & FETCH FUNCTION (Simulates fetching from DB)

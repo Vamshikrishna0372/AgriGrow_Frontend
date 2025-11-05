@@ -9,12 +9,12 @@ import DeliveryAddress from './DeliveryAddress';
 import CheckoutFlow from './CheckoutFlow'; 
 
 // 🔑 BACKEND CONFIGURATION
-const API_BASE_URL = 'https://agrigrow-backend-rgpk.onrender.com/api'; 
+const API_BASE_URL = 'https://agrigrow-backend-j1r5.onrender.com/api'; 
 // CRITICAL: MOCK_USER_ID used for cart logic. Use the one consistent with your server if integrating the address logic.
 const MOCK_USER_ID = '60c72b2f9c8f2b0015b4e8c1'; 
 
 // ✅ FIX 3: Simplified base URL for static assets. This MUST be the root of your Express server.
-const STATIC_BASE_URL = 'https://agrigrow-backend-rgpk.onrender.com'; 
+const STATIC_BASE_URL = 'https://agrigrow-backend-j1r5.onrender.com'; 
 
 // Initial state for the delivery details (shared with DeliveryAddress.jas)
 const initialDeliveryState = {
