@@ -212,7 +212,7 @@ export default function LoginPage() {
           </p>
           <div className="features">
             <p>🌿 Organic & Fresh Produce</p>
-            <p>🚜 Quality Farm Equipment</p>
+            <p>🚜 Quality Farm</p>
             <p>📦 Quick & Secure Delivery</p>
           </div>
         </div>

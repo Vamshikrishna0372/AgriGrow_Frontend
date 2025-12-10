@@ -468,8 +468,7 @@ export default function AdminPanel() {
                 
                 <button className={`sidebar-btn ${activeSection==="products" ? "active":""}`} onClick={()=>setActiveSection("products")}><FaBoxOpen /> Products</button>
                 <button className={`sidebar-btn ${activeSection==="addProduct" ? "active":""}`} onClick={()=>setActiveSection("addProduct")}><FaPlusCircle /> Add Product</button>
-                <button className={`sidebar-btn ${activeSection==="customers" ? "active":""}`} onClick={()=>setActiveSection("customers")}><FaUsers /> Customers</button>
-                <button className={`sidebar-btn ${activeSection==="delivery" ? "active":""}`} onClick={()=>setActiveSection("delivery")}><FaTruck /> Delivery Info</button>
+                
                 <button className="sidebar-btn logout-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</button>
             </div>
 
